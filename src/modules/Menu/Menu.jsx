@@ -5,58 +5,71 @@ import {Link} from "react-router-dom";
 
 const menu = [
     {
+        id: 1,
         text: "Главная",
         link: "news"
     },
     {
+        id: 2,
         text: "Реестры",
         submenu: [
             {
+                id: 3,
                 text: "Реестры счетов",
                 link: "registries"
             },
             {
+                id: 4,
                 text: "Цифровые реестры",
-                link: "digitalregistries"
+                link: "news"
             }
         ]
     },
     {
+        id: 5,
         text: "Прикрепленное население",
         submenu: [
             {
+                id: 6,
                 text: "Проверка прикрепления",
-                link: "checkpeople"
+                link: "news"
             },
             {
+                id: 7,
                 text: "Списки",
-                link: "spiski"
+                link: "news"
             },
             {
+                id: 8,
                 text: "Списки ДУ",
-                link: "spiskidu"
+                link: "news"
             },
             {
+                id: 9,
                 text: "Журнал заявлений",
-                link: "journal"
+                link: "news"
             }
         ]
     },
     {
+        id: 10,
         text: "Диспансеризация",
-        link: "disp"
+        link: "news"
     },
     {
+        id: 11,
         text: "Госпитализация",
-        link: "gosp"
+        link: "news"
     },
     {
+        id: 12,
         text: "Отчеты",
-        link: "reports"
+        link: "news"
     },
     {
+        id: 13,
         text: "Телемедицина",
-        link: "telemed"
+        link: "news"
     }
 ]
 
@@ -68,57 +81,61 @@ const Menu = () => {
     )
 }
 
-const NavMenu = ({ data }) => {
+const NavMenu = ({data}) => {
     const [selectedNavMenu, setSelectedNavMenu] = useState(null);
 
     const onToggleNavMenu = (key) => {
-        if (selectedNavMenu === key)
-            setSelectedNavMenu(null)
-        else
+        if (selectedNavMenu !== key)
             setSelectedNavMenu(key)
     }
 
-    const checkNavMenu = (menu, key) => {
+    const checkNavMenu = (menu) => {
         if (menu.submenu) {
             return (
                 <Details heading={menu.text}>
-                    <div>
-                        {menu.submenu.map((item) => (
-                            <Link to={item.link}>
-                                <div  className={selectedNavMenu === key ? style.navmenuSelected : style.navmenu}
-                                      onClick={() => onToggleNavMenu(key)} key={item.text}
-                                >
-                                    <p >
-                                        {item.text}
-                                    </p>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+                    {menu.submenu.map((menu, key) => (
+                        <Link to={menu.link} className={style.container}>
+                            <div
+                                className={selectedNavMenu === menu.id ? style.navmenuSelected : style.navmenu}
+                                onClick={() => onToggleNavMenu(menu.id)}
+                                key={menu.id}
+                            >
 
+                                <p>
+                                    {menu.text}
+                                </p>
+
+                            </div>
+                        </Link>
+                    ))}
                 </Details>
             )
         } else {
             return (
-                <div
-                    className={selectedNavMenu === key ? style.navmenuSelected : style.navmenu}
-                    onClick={() => onToggleNavMenu(key)}
-                >
-                    <Link to={menu.link}>
-                        <p key={menu.text}>
+                <Link to={menu.link}>
+                    <div
+                        className={selectedNavMenu === menu.id ? style.navmenuSelected : style.navmenu}
+                        onClick={() => onToggleNavMenu(menu.id)}
+                        key={menu.id}
+                    >
+
+                        <p>
                             {menu.text}
                         </p>
-                    </Link>
-                </div>
+
+                    </div>
+                </Link>
             )
         }
     }
 
     return (
         <div className={style.menu}>
-            {data.map((menuItem, index) => (
-                <div key={menuItem.text}>{checkNavMenu(menuItem, index)}</div>
-            ))}
+            {
+                data.map((menuItem) => (
+                    <div key={menuItem.id}>{checkNavMenu(menuItem)}</div>
+                ))
+            }
         </div>
     )
 }

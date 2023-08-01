@@ -1,4 +1,5 @@
 import style from "./News.module.scss"
+import CardNews from "../../modules/CardNews/CardNews";
 
 const News = () => {
     return (
@@ -8,7 +9,7 @@ const News = () => {
             </div>
 
             <div className={style.container}>
-
+                <CardNews styleCard={style.card}/>
             </div>
         </div>
     )

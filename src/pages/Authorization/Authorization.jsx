@@ -5,11 +5,9 @@ import Button from "../../ui/Button/Button";
 const Authorization = () => {
 
     return (
-        <div>
-            <Link to="/main">
-                <Button text="Войти" />
-            </Link>
-        </div>
+        <Link to="/main">
+            <Button text="Войти" size={"large"} type={"primary"}/>
+        </Link>
     )
 }
 

@@ -1,0 +1,17 @@
+.avatar {
+  display: flex;
+  padding: 9px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 37px;
+  background: #E6E6E6;
+
+  & > p {
+    color: #616161;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

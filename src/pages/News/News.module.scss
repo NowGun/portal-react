@@ -27,5 +27,17 @@
 
 .container {
   width: 100%;
-  height: auto;
+  padding: 0 30px;
+  padding-bottom: 100px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  overflow: auto;
+  height: calc(100vh - 100px);
+}
+
+.card {
+  max-width: 350px;
 }
