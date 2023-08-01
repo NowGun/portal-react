@@ -1,18 +1,23 @@
 import style from "./Menu.module.scss"
-import {Fragment} from "react";
+import {Fragment, useState} from "react";
+import Details from "../../ui/Details/Details";
+import {Link} from "react-router-dom";
 
 const menu = [
     {
-        text: "Главная"
+        text: "Главная",
+        link: "news"
     },
     {
         text: "Реестры",
         submenu: [
             {
-                text: "Реестры счетов"
+                text: "Реестры счетов",
+                link: "registries"
             },
             {
-                text: "Цифровые реестры"
+                text: "Цифровые реестры",
+                link: "digitalregistries"
             }
         ]
     },
@@ -20,30 +25,38 @@ const menu = [
         text: "Прикрепленное население",
         submenu: [
             {
-                text: "Проверка прикрепления"
+                text: "Проверка прикрепления",
+                link: "checkpeople"
             },
             {
-                text: "Списки"
+                text: "Списки",
+                link: "spiski"
             },
             {
-                text: "Списки ДУ"
+                text: "Списки ДУ",
+                link: "spiskidu"
             },
             {
-                text: "Журнал заявлений"
+                text: "Журнал заявлений",
+                link: "journal"
             }
         ]
     },
     {
-        text: "Диспансеризация"
+        text: "Диспансеризация",
+        link: "disp"
     },
     {
-        text: "Госпитализация"
+        text: "Госпитализация",
+        link: "gosp"
     },
     {
-        text: "Отчеты"
+        text: "Отчеты",
+        link: "reports"
     },
     {
-        text: "Телемедицина"
+        text: "Телемедицина",
+        link: "telemed"
     }
 ]
 
@@ -56,37 +69,59 @@ const Menu = () => {
 }
 
 const NavMenu = ({ data }) => {
-    const checkNavMenu = (menu) => {
+    const [selectedNavMenu, setSelectedNavMenu] = useState(null);
+
+    const onToggleNavMenu = (key) => {
+        if (selectedNavMenu === key)
+            setSelectedNavMenu(null)
+        else
+            setSelectedNavMenu(key)
+    }
+
+    const checkNavMenu = (menu, key) => {
         if (menu.submenu) {
             return (
-                <details>
-                    <summary>{menu.text}</summary>
-                    <div className={style.flexColumn}>
+                <Details heading={menu.text}>
+                    <div>
                         {menu.submenu.map((item) => (
-                            <p key={item.text}>{item.text}</p>
+                            <Link to={item.link}>
+                                <div  className={selectedNavMenu === key ? style.navmenuSelected : style.navmenu}
+                                      onClick={() => onToggleNavMenu(key)} key={item.text}
+                                >
+                                    <p >
+                                        {item.text}
+                                    </p>
+                                </div>
+                            </Link>
                         ))}
                     </div>
-                </details>
-            );
+
+                </Details>
+            )
         } else {
             return (
-                <div className={style.navmenu}>
-                    <p>{menu.text}</p>
+                <div
+                    className={selectedNavMenu === key ? style.navmenuSelected : style.navmenu}
+                    onClick={() => onToggleNavMenu(key)}
+                >
+                    <Link to={menu.link}>
+                        <p key={menu.text}>
+                            {menu.text}
+                        </p>
+                    </Link>
                 </div>
-            );
+            )
         }
-    };
+    }
 
     return (
-        <div>
-            {data.map((menuItem) => (
-                <Fragment key={menuItem.text}>
-                    {checkNavMenu(menuItem)}
-                </Fragment>
+        <div className={style.menu}>
+            {data.map((menuItem, index) => (
+                <div key={menuItem.text}>{checkNavMenu(menuItem, index)}</div>
             ))}
         </div>
-    );
-};
+    )
+}
 
 
 export default Menu

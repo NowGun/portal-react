@@ -1,7 +1,9 @@
 import style from "./Main.module.scss"
 import Header from "../../components/Header/Header";
 import NavMenu from "../../components/NavMenu/NavMenu";
-import News from "../../components/Layouts/News/News";
+import News from "../News/News";
+import {Outlet} from "react-router-dom";
+
 
 const Main = () => {
     return (
@@ -10,7 +12,9 @@ const Main = () => {
 
             <div className={style.flexRow}>
                 <NavMenu/>
-                <News/>
+                <div>
+                    <Outlet />
+                </div>
             </div>
         </div>
     )

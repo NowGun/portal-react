@@ -1,4 +1,8 @@
 .card {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+
   padding: 10px;
   border-radius: 8px;
   background: #FFFFFF;
@@ -9,4 +13,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+
+  z-index: 1000;
 }

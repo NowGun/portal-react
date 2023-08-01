@@ -1,0 +1,31 @@
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #FAFBFC;
+  height: 100%;
+  width: 100%;
+
+  flex: 0 0 100%;
+}
+
+.header {
+  display: flex;
+  padding: 20px 30px;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.container {
+  width: 100%;
+  height: auto;
+}
