@@ -93,18 +93,18 @@ const NavMenu = ({data}) => {
         if (menu.submenu) {
             return (
                 <Details heading={menu.text}>
-                    {menu.submenu.map((menu, key) => (
-                        <Link to={menu.link} className={style.container}>
+                    {menu.submenu.map((menu) => (
+                        <Link to={menu.link}
+                              className={style.container}
+                              key={menu.id}
+                        >
                             <div
                                 className={selectedNavMenu === menu.id ? style.navmenuSelected : style.navmenu}
                                 onClick={() => onToggleNavMenu(menu.id)}
-                                key={menu.id}
                             >
-
                                 <p>
                                     {menu.text}
                                 </p>
-
                             </div>
                         </Link>
                     ))}
@@ -112,17 +112,14 @@ const NavMenu = ({data}) => {
             )
         } else {
             return (
-                <Link to={menu.link}>
+                <Link to={menu.link} key={menu.id}>
                     <div
                         className={selectedNavMenu === menu.id ? style.navmenuSelected : style.navmenu}
                         onClick={() => onToggleNavMenu(menu.id)}
-                        key={menu.id}
                     >
-
                         <p>
                             {menu.text}
                         </p>
-
                     </div>
                 </Link>
             )

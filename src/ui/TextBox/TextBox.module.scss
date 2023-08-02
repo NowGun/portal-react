@@ -1,0 +1,32 @@
+.textbox {
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #d1d1d1 ;
+
+  &::placeholder {
+    color: #707070;
+  }
+
+  &:hover:not(:disabled) {
+    border: 1px solid #0f6cbd;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.small {
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.medium {
+  padding: 7px 12px;
+  font-size: 14px;
+}
+
+.large {
+  padding: 11px 14px;
+  font-size: 16px;
+}

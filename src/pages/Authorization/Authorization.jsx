@@ -1,13 +1,12 @@
 import style from "./Authorization.module.scss"
-import {Link} from "react-router-dom";
-import Button from "../../ui/Button/Button";
+import FormAuth from "../../components/FormAuth/FormAuth";
 
 const Authorization = () => {
 
     return (
-        <Link to="/main">
-            <Button text="Войти" size={"large"} type={"primary"}/>
-        </Link>
+        <div className={style.container}>
+            <FormAuth />
+        </div>
     )
 }
 

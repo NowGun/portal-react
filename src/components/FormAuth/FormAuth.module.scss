@@ -1,0 +1,48 @@
+.container {
+  width: 350px;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.textboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.registr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    color: #0f6cbd;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  p:nth-child(1) {
+    color: #7b8182;
+    text-align: center;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  p:nth-child(2) {
+    color: #a4b5b8;
+    text-align: center;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
